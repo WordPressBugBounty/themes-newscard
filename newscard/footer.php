@@ -9,11 +9,7 @@
  * @package NewsCard
  */
 
-?>
-		<?php global $newscard_settings; ?>
-			</div><!-- row -->
-		</div><!-- .container -->
-	</div><!-- #content .site-content-->
+	global $newscard_settings; ?>
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<?php if ( $newscard_settings['newscard_footer_featured_posts_hide'] === 0 ) {
 

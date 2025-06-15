@@ -432,7 +432,7 @@ $newscard_settings = newscard_get_option_defaults(); ?>
 			</section><!-- .featured-section -->
 		<?php } ?>
 
-		<?php if ( !is_front_page() && !is_home() && !is_page_template('templates/front-page-template.php') && function_exists('newscard_breadcrumbs') && $newscard_settings['newscard_breadcrumbs_hide'] === 0 ) { ?>
+		<?php if ( !is_front_page() && !is_home() && !is_page_template('templates/front-page-template.php') && !is_page_template('templates/full-width-template.php') && function_exists('newscard_breadcrumbs') && $newscard_settings['newscard_breadcrumbs_hide'] === 0 ) { ?>
 			<div id="breadcrumb">
 				<div class="container">
 					<?php newscard_breadcrumbs(); ?>
@@ -440,10 +440,3 @@ $newscard_settings = newscard_get_option_defaults(); ?>
 			</div><!-- .breadcrumb -->
 		<?php } ?>
 	</header><!-- #masthead -->
-	<div id="content" class="site-content <?php echo ( ( ( is_front_page() || ( is_home() && $newscard_settings['newscard_banner_display'] === 'front-blog' ) ) && ( $newscard_settings['newscard_banner_slider_posts_hide'] === 0 || $newscard_settings['newscard_banner_featured_posts_1_hide'] === 0 || $newscard_settings['newscard_banner_featured_posts_2_hide'] === 0 ) ) || ( ( is_front_page() || ( is_home() && $newscard_settings['newscard_header_featured_posts_banner_display'] === 'front-blog' ) ) && $newscard_settings['newscard_header_featured_posts_hide'] === 0 ) ) ? "pt-0" : ""; ?>">
-		<div class="container">
-			<?php if ( is_page_template('templates/front-page-template.php') ) { ?>
-				<div class="row gutter-14 justify-content-center site-content-row">
-			<?php } else { ?>
-				<div class="row justify-content-center site-content-row">
-			<?php } ?>

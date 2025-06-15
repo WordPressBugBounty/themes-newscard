@@ -3,8 +3,8 @@
 Contributors: themehorse
 Requires at least: 4.7
 Requires PHP: 5.2
-Tested up to: 6.6
-Stable tag: 1.4
+Tested up to: 6.8
+Stable tag: 1.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Tags: blog, entertainment, news, two-columns, left-sidebar, right-sidebar, custom-background, custom-header, custom-logo, custom-menu, featured-image-header, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -64,6 +64,11 @@ Yes. Theme supports WooCommerce, bbPress, Contact Form 7 and many more.
 * Other all resources, Copyright 2018 Theme Horse, MIT/GPLv3
 
 == Changelog ==
+
+= 1.5 =
+* Feature - full width template and blank template added for the page builder
+* Tweak - header/footer code updated to support page builder
+* Fix - translation loading triggered too early notice fixed
 
 = 1.4 =
 * Fix - validate and sanitize the specific inputs

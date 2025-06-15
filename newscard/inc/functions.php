@@ -82,6 +82,8 @@ if ( !function_exists('newscard_layout_primary') ) {
 		$newscard_settings = newscard_get_option_defaults();
 		global $post;
 
+		$class = '';
+
 		if ($post) {
 			$newscard_meta_layout = get_post_meta($post->ID, 'newscard_sidebarlayout', true);
 		}
@@ -93,28 +95,45 @@ if ( !function_exists('newscard_layout_primary') ) {
 
 		if ( 'default' == $newscard_meta_layout ) {
 			if ( ('right' == $newscard_custom_layout) || ('nosidebar' == $newscard_custom_layout) ) {
-				$class = 'col-lg-8 ';
+				$class = ' col-lg-8';
 			}
 			elseif ( 'left' == $newscard_custom_layout ) {
-				$class = 'col-lg-8 order-lg-2 ';
+				$class = ' col-lg-8 order-lg-2';
 			}
 			elseif ( 'fullwidth' == $newscard_custom_layout ) {
-				$class = 'col-lg-12 ';
+				$class = ' col-lg-12';
 			}
 		}
 		elseif ( ('meta-right' == $newscard_meta_layout) || ('meta-nosidebar' == $newscard_meta_layout) ) {
-			$class = 'col-lg-8 ';
+			$class = ' col-lg-8';
 		}
 		elseif ( 'meta-left' == $newscard_meta_layout ) {
-			$class = 'col-lg-8 order-lg-2 ';
+			$class = ' col-lg-8 order-lg-2';
 		}
 		elseif ( 'meta-fullwidth' == $newscard_meta_layout ) {
-			$class = 'col-lg-12 ';
+			$class = ' col-lg-12';
 		}
 
-		echo '<div id="primary" class="' . $class . 'content-area">';
-
+		return $class;
 	}
+}
+
+function should_output_pt0() {
+	$newscard_settings =	newscard_get_option_defaults();
+
+	$banner_display =		$newscard_settings['newscard_banner_display'] === 'front-blog';
+	$banner_hide =			!$newscard_settings['newscard_banner_slider_posts_hide'] || 
+							!$newscard_settings['newscard_banner_featured_posts_1_hide'] || 
+							!$newscard_settings['newscard_banner_featured_posts_2_hide'];
+	$featured_display =		$newscard_settings['newscard_header_featured_posts_banner_display'] === 'front-blog';
+	$featured_hide =		!$newscard_settings['newscard_header_featured_posts_hide'];
+
+	$class =				"";
+
+	if ((is_front_page() || is_home()) && ( ($banner_display && $banner_hide) || ($featured_display && $featured_hide) )) {
+		$class = ' pt-0';
+	}
+	return $class;
 }
 
 if ( ! function_exists( 'newscard_posted_on' ) ) :

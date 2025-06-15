@@ -3,7 +3,6 @@
 
 		class NewsCard_Info {
 
-			public $tab_sections = array();
 			public $theme_name = ''; // For storing Theme Name
 			public $theme_version = ''; // For Storing Theme Current Version Information
 			public $theme_slug = ''; // For Storing Theme slug
@@ -19,15 +18,6 @@
 				$this->theme_name = $theme->Name;
 				$this->theme_version = $theme->Version;
 				$this->theme_slug = $theme->get_template();
-
-				/* Define Tabs Sections */
-				$this->tab_sections = array(
-					'getting_started' 		=> __('Getting Started', 'newscard'),
-					'recommended_actions' 	=> __('Recommended Actions', 'newscard'),
-					'demo_content' 			=> __('Demo Content', 'newscard'),
-					'support' 				=> __('Support', 'newscard'),
-					'free_vs_pro' 			=> __('Free Vs Pro', 'newscard'),
-				);
 
 				/* Theme Activation Notice */
 				add_action( 'admin_notices', array( $this, 'newscard_activation_admin_notice' ) );
@@ -75,8 +65,17 @@
 						<a href="<?php echo esc_url('https://www.themehorse.com/themes/newscard-pro'); ?>" class="button upgrade-button" target="_blank" rel="noopener noreferrer"><?php echo esc_html__('Upgrade to Pro', 'newscard'); ?></a>
 					</p>
 					<?php 
+						/* Define Tabs Sections */
+						$tab_sections = array(
+							'getting_started' 		=> __('Getting Started', 'newscard'),
+							'recommended_actions' 	=> __('Recommended Actions', 'newscard'),
+							'demo_content' 			=> __('Demo Content', 'newscard'),
+							'support' 				=> __('Support', 'newscard'),
+							'free_vs_pro' 			=> __('Free Vs Pro', 'newscard'),
+						);
+
 						// Allowed sections
-						$allowed_sections = array_keys($this->tab_sections);
+						$allowed_sections = array_keys($tab_sections);
 
 						// Sanitize and Validate the section
 						$section = isset($_GET['section']) ? sanitize_file_name($_GET['section']) : 'getting_started';
@@ -86,7 +85,7 @@
 						}
 						?>
 					<div class="nav-tab-wrapper clearfix">
-						<?php $tabs = $this->tab_sections;
+						<?php $tabs = $tab_sections;
 						foreach($tabs as $id => $label) :
 							$nav_class = 'nav-tab ';
 							$nav_class .= $id;
